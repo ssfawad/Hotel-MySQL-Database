@@ -2,9 +2,9 @@ USE Hotel;
 -- 1. Write a query that returns a list of reservations that end in July 2023, including the name of the guest, the room number(s), and the reservation dates.
 Select 
 	g.`Name`,
-    r.RoomNum,
-    r.StartDate,
-    r.EndDate
+	r.RoomNum,
+    	r.StartDate,
+    	r.EndDate
 FROM Reservation r
 INNER JOIN Guest g
 	ON r.GuestID = g.GuestID
@@ -19,9 +19,9 @@ Bettyann Seery	303	7/28/2023	7/29/2023*/
 -- 2.Write a query that returns a list of all reservations for rooms with a jacuzzi, displaying the guest's name, the room number, and the dates of the reservation.
 Select 
 	g.`Name`,
-    r.RoomNum,
-    r.StartDate,
-    r.EndDate
+	r.RoomNum,
+    	r.StartDate,
+    	r.EndDate
 FROM Reservation r
 INNER JOIN Guest g
 	ON r.GuestID = g.GuestID
@@ -46,10 +46,10 @@ Syed Fawad	307	3/17/2023	3/20/2023
 -- 3.Write a query that returns all the rooms reserved for a specific guest, including the guest's name, the room(s) reserved, the starting date of the reservation, and how many people were included in the reservation. (Choose a guest's name from the existing data.)
 Select 
 	g.`Name`,
-    r.RoomNum,
-    r.StartDate,
-    r.EndDate,
-    (r.adults + r.children) AS TotalPeople
+	r.RoomNum,
+    	r.StartDate,
+    	r.EndDate,
+	(r.adults + r.children) AS TotalPeople
 FROM Reservation r
 INNER JOIN Guest g
 	ON r.GuestID = g.GuestID
@@ -65,9 +65,9 @@ Mack Simmer	301	11/22/2023	11/25/2023	4
 -- 4. Write a query that returns a list of rooms, reservation ID, and per-room cost for each reservation. The results should include all rooms, whether or not there is a reservation associated with the room.
 SELECT
 	r.ReservationID,
-    room.RoomNum,
-    room.BasePrice,
-    r.TotalCost
+	room.RoomNum,
+	room.BasePrice,
+	r.TotalCost
 FROM Room room
 LEFT JOIN Reservation r
 	ON R.RoomNum = room.RoomNum;
@@ -103,10 +103,10 @@ NULL	402	399.99	NULL
 
 -- 5. Write a query that returns all the rooms accommodating at least three guests and that are reserved on any date in April 2023.
 Select 
-    RoomNum,
-    StartDate,
-    EndDate,
-    (adults + children) AS TotalPeople
+	RoomNum,
+ 	StartDate,
+    	EndDate,
+    	(adults + children) AS TotalPeople
 FROM Reservation
 WHERE (adults + children) >= 3 
 AND (Month(StartDate) = 4 OR MONTH(EndDate) = 4);
@@ -138,7 +138,10 @@ Luechtefeld	1
 */
 
 -- 7. Write a query that displays the name, address, and phone number of a guest based on their phone number. (Choose a phone number from the existing data.)
-SELECT `Name`, Address, Phone
+SELECT 
+	`Name`,
+	Address,
+	Phone
 FROM Guest
 WHERE Phone = "(478) 277-9632";
 
